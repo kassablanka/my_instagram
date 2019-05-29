@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 import User from './User'
 import InstaService from '../services/instaservice'
 import ErrorMessage from './ErrorMessage'
+import Loader from './Loader'
 
 
 export default class Users extends Component {
@@ -10,7 +13,8 @@ export default class Users extends Component {
 
     state = {
         users: [],
-        error: false
+        error: false,
+        loader: true,
     }
 
     componentDidMount() {
@@ -18,7 +22,7 @@ export default class Users extends Component {
     }
 
     updateUsers() {
-        this.InstaService.getAllPosts()
+        this.InstaService.getAllUsers()
         .then(this.onUsersLoaded)
         .catch(this.onError)
     }
@@ -26,13 +30,15 @@ export default class Users extends Component {
     onUsersLoaded = (users) => {
         this.setState({
             users,
-            error: false
+            error: false,
+            loader: false
         })
     }
 
     onError = (err) => {
         this.setState({
-            error: true
+            error: true,
+            loader: false
         })
     }
 
@@ -41,20 +47,22 @@ export default class Users extends Component {
             const { name, altname, photo, id } = item
 
             return (
-                <a href="#" className="user min" key={id}>
+                <Link to="/profile" className="user min" key={id}>
                     <img src={photo} altname={altname} />
                     <div>{name}</div>
-                </a>
+                </Link>
             )
         })
     }
 
     render() {
 
-        const {error, users} = this.state
+        const {error, users, loader} = this.state
 
         if(error) {
             return <ErrorMessage/>
+        } else if(!error && loader) {
+            return <Loader />
         }
 
         const items = this.renderItems(users)

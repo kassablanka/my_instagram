@@ -6,7 +6,12 @@
 }
 
 body {
-    background-color: #FAFAFA;
+    background-color: #161616;
+    color: #efefef;
+}
+
+img, svg {
+    max-width: 100%;
 }
 
 .container {
@@ -16,18 +21,32 @@ body {
 
 header {
     height: 90px;
-    background: #FFFFFF;
+    background: #111;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    display: block;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .logo img {
     width: 60px;
-    -webkit-filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.25));
-    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.25));
+    margin-right: 10px;
+}
+
+.logo div{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 800;
+    color: #445ea0;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.logo:hover{
+    text-decoration: none;
 }
 
 .h-flex {
@@ -50,9 +69,18 @@ header {
 
 .menu__links {
     font-size: 18px;
-    color: #000000;
+    color: #999;
     text-decoration: none;
+    display: block;
+    width: 30px;
+    filter: invert(1) contrast(.01);
+    transition: .2s ease-in-out;
 }
+
+.menu__links:hover{
+    filter: invert(1) contrast(1);
+}
+
 
 .feed {
     display: flex;
@@ -65,11 +93,11 @@ header {
 }
 
 .post {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     width: 650px;
     min-height: 560px;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #111;
+    border: 2px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
 }
@@ -98,19 +126,28 @@ header {
 
 .user {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #000;
-    
+    color: #efefef;
+    transition: .2s ease-in-out;
+}
+
+.user:hover{
+    color: #ca1632;
+}
+
+.user:hover img{
+    transform: scale(1.1);
 }
 
 .user img {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     object-fit: cover;
-    border: 1px solid rgb(201, 46, 140);
+    border: 2px solid #ca1632;
+    transition: .2s ease-in-out;
 }
 
 .user div {
@@ -123,12 +160,12 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin: 7px 0;
+    margin: 10px 0;
 }
 
 .min img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     object-fit: cover;
 }
@@ -144,7 +181,7 @@ header {
     padding: 20px;
     width: 265px;
     min-height: 260px;
-    background: #FFFFFF;
+    background: #111;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
@@ -163,8 +200,14 @@ header {
 }
 
 .palette img {
-    width: calc(100%/3 - 60px);
-    margin: 10px;
+    width: calc(100%/3);
     height: 300px;
     object-fit: cover;
+}
+
+.loader {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
